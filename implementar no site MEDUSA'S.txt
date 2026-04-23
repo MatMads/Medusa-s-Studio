@@ -1,0 +1,10 @@
+>>> implementar no site MEDUSA'S <<<
+
+
+- Corrigir o bug no botão de contato na visão de celular (texto não aparece);
+
+- Mudar a parte do SOBRE;
+
+- menu hamburger no celular está escondido;
+
+
