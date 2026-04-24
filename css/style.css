@@ -1398,6 +1398,8 @@ select {
   .nav__link--cta {
     text-align: center;
     border-bottom: none !important;
+    background-color: var(--color-primary) !important;
+    color: var(--color-bg) !important;
     margin-top: var(--sp-4);
     padding: var(--sp-3) var(--sp-8);
   }
