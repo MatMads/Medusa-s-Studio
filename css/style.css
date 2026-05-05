@@ -702,6 +702,39 @@ select {
   animation: bouncY 2.2s ease-in-out infinite;
 }
 
+/* ===== KEYFRAMES ===== */
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+
+/* =============================================
+   MARQUEE STRIP
+   ============================================= */
+.strip {
+  background: var(--color-primary);
+  padding: 0.75rem 0;
+  overflow: hidden;
+}
+
+.strip__track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: marquee 80s linear infinite;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
 
 /* ============================================================
    9. SOBRE (.about)
