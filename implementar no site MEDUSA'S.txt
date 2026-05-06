@@ -2,5 +2,7 @@
 
 
 - Mudar a parte do SOBRE;
+- Separar a funcionalidade de rolamento
+- Incluir um texto no whatsapp button
 
 
