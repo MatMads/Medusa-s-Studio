@@ -29,6 +29,7 @@
   --color-accent: #978c74;
   --color-neutral: #8c8c7c;
 
+
   /* --- Cores derivadas / de apoio --- */
   --color-bg-alt: #f2e8d0;
   --color-bg-deep: #ecddc4;
@@ -38,6 +39,10 @@
   --color-white: #ffffff;
   --color-border: rgba(172, 161, 141, 0.35);
   --color-shadow-raw: 102, 83, 60;
+  --color-hero-text: #f7f1e3;
+  --color-hero-text-muted: #d8ccb6;
+
+
   /* usado em rgba() */
   --color-wpp: #25D366;
   --color-wpp-hover: #1da851;
@@ -131,6 +136,7 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+
 }
 
 body {
@@ -638,10 +644,11 @@ select {
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--color-hero-text-muted);
   margin-bottom: var(--sp-6);
   animation: fadeInUp 0.8s ease both;
   animation-delay: 0.2s;
+  text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
 .hero__title {
@@ -649,10 +656,11 @@ select {
   font-size: clamp(var(--text-4xl), 9vw, var(--text-5xl));
   font-weight: 700;
   line-height: 1.06;
-  color: var(--color-bg);
+  color: var(--color-hero-text);
   margin-bottom: var(--sp-6);
   animation: fadeInUp 0.8s ease both;
   animation-delay: 0.4s;
+  text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
 /* Itálico do H1 com cor de destaque */
@@ -664,17 +672,19 @@ select {
 .hero__subtitle {
   font-size: var(--text-md);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--color-hero-text);
   max-width: 480px;
   margin-inline: auto;
   margin-bottom: var(--sp-10);
   animation: fadeInUp 0.8s ease both;
   animation-delay: 0.6s;
+  text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
 .hero__cta {
   animation: fadeInUp 0.8s ease both;
   animation-delay: 0.8s;
+  text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
 /* Indicador de scroll */
@@ -695,11 +705,13 @@ select {
 
 .hero__scroll-hint:hover {
   color: rgba(250, 243, 226, 0.90);
+  text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
 .hero__scroll-arrow {
   font-size: var(--text-lg);
   animation: bouncY 2.2s ease-in-out infinite;
+  text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
 /* ===== KEYFRAMES ===== */
