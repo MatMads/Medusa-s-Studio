@@ -727,7 +727,7 @@ select {
 
 
 /* =============================================
-   MARQUEE STRIP
+   MARQUEE STRIP 1 (Primeiro)
    ============================================= */
 .strip {
   background: var(--color-primary);
@@ -740,6 +740,25 @@ select {
   gap: 2rem;
   width: max-content;
   animation: marquee 80s linear infinite;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
+/* MARQUEE STRIP 2 (Segundo)  */
+.strip2 {
+  background: var(--color-primary);
+  padding: 0.75rem 0;
+  overflow: hidden;
+}
+
+.strip__track2 {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: marquee 80s linear infinite reverse;
   font-size: 0.72rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
