@@ -685,7 +685,7 @@ select {
   color: var(--color-text-muted);
   margin-bottom: var(--sp-6);
   animation: fadeInUp 0.8s ease both;
-  animation-delay: 0.4s;
+  animation-delay: 0.3s;
   text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
@@ -703,13 +703,13 @@ select {
   margin-inline: auto;
   margin-bottom: var(--sp-10);
   animation: fadeInUp 0.8s ease both;
-  animation-delay: 0.6s;
+  animation-delay: 0.4s;
   text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
 .hero__cta {
   animation: fadeInUp 0.8s ease both;
-  animation-delay: 0.8s;
+  animation-delay: 0.5s;
   text-shadow: 0 2px 12px rgba(26, 18, 8, 0.35);
 }
 
@@ -726,7 +726,7 @@ select {
   text-transform: uppercase;
   transition: color var(--t-fast);
   animation: fadeInUp 0.8s ease both;
-  animation-delay: 1.0s;
+  animation-delay: 0.5s;
 }
 
 .hero__scroll-hint:hover {
