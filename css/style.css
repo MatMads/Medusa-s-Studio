@@ -611,9 +611,12 @@ select {
   object-fit: cover;
   object-position: center right;
   z-index: 0;
-  opacity: 1.0;
+  opacity: 1;
   filter: saturate(0.8) brightness(1.2);
+  filter: blur(15px);
+
 }
+
 
 .hero {
   position: relative;
