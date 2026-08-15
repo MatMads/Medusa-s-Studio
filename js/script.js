@@ -9,8 +9,7 @@
  *  5. Portfólio – alternância de abas
  *  6. Portfólio – modal de imagem
  *  7. Animações de scroll (IntersectionObserver)
- *  8. Hero – animação de carregamento
- * 9. Inicialização central
+ *  8. Inicialização central
  */
 
 'use strict';
@@ -169,15 +168,19 @@ function initPortfolioTabs() {
     });
   }
 
-  tabs.forEach(tab => {
+  tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => activateTab(tab));
 
-    // Suporte a teclado (Enter / Space)
+    // Navegação por setas (padrão ARIA tablist) — Enter/Espaço já ativam via <button>
     tab.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        activateTab(tab);
-      }
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+
+      e.preventDefault();
+      const delta = e.key === 'ArrowRight' ? 1 : -1;
+      const nextTab = tabs[(index + delta + tabs.length) % tabs.length];
+
+      nextTab.focus();
+      activateTab(nextTab);
     });
   });
 }
@@ -201,6 +204,10 @@ function initPortfolioModal() {
   /** Elemento focado antes de abrir o modal (para restaurar o foco ao fechar) */
   let lastFocused = null;
 
+  /** Itens navegáveis com ←/→ na galeria atual (vazio quando aberto via badge) */
+  let galleryItems = [];
+  let galleryIndex = -1;
+
   /**
    * Abre o modal com a imagem e legenda fornecidas.
    * @param {string} src     - Caminho da imagem
@@ -221,11 +228,23 @@ function initPortfolioModal() {
     requestAnimationFrame(() => closeBtn.focus());
   }
 
+  /** Exibe o item de índice `index` dentro da galeria atual */
+  function showGalleryItem(index) {
+    const total = galleryItems.length;
+    galleryIndex = (index + total) % total;
+    const item = galleryItems[galleryIndex];
+    const imgEl = $('img', item);
+
+    openModal(item.dataset.src, imgEl ? imgEl.alt : '', item.dataset.caption || '');
+  }
+
   /** Fecha o modal e restaura o foco */
   function closeModal() {
     modal.setAttribute('hidden', '');
     img.src = '';
     document.body.style.overflow = '';
+    galleryItems = [];
+    galleryIndex = -1;
 
     if (lastFocused) {
       lastFocused.focus();
@@ -235,12 +254,9 @@ function initPortfolioModal() {
   // Clique nos itens do portfólio
   items.forEach(item => {
     item.addEventListener('click', () => {
-      const src = item.dataset.src;
-      const cap = item.dataset.caption || '';
-      const imgEl = $('img', item);
-      const alt = imgEl ? imgEl.alt : '';
-
-      if (src) openModal(src, alt, cap);
+      const panel = item.closest('.portfolio__panel');
+      galleryItems = panel ? $$('.portfolio__item', panel) : [item];
+      showGalleryItem(galleryItems.indexOf(item));
     });
 
     // Teclado: Enter ou Espaço abre o modal
@@ -257,6 +273,8 @@ function initPortfolioModal() {
     badge.addEventListener('click', () => {
       const src = badge.dataset.src;
       const cap = badge.dataset.caption || badge.textContent.trim();
+      galleryItems = [];
+      galleryIndex = -1;
       if (src) openModal(src, cap, cap);
     });
 
@@ -274,8 +292,23 @@ function initPortfolioModal() {
   backdrop.addEventListener('click', closeModal);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+    if (modal.hasAttribute('hidden')) return;
+
+    if (e.key === 'Escape') {
       closeModal();
+      return;
+    }
+
+    // Navegação entre imagens da galeria
+    if (galleryItems.length > 1 && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+      showGalleryItem(galleryIndex + (e.key === 'ArrowRight' ? 1 : -1));
+      return;
+    }
+
+    // Focus trap: único elemento focável do modal é o botão de fechar
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      closeBtn.focus();
     }
   });
 }
@@ -315,61 +348,6 @@ function initScrollAnimations() {
 
 
 /* ============================================================
-   8. HERO — animação de carregamento da imagem de fundo
-   ============================================================ */
-
-function initHero() {
-  const hero = $('.hero');
-  const heroImg = $('.hero__bg-img');
-
-  if (!hero) return;
-
-  function markLoaded() {
-    hero.classList.add('is-loaded');
-  }
-
-  // Se a imagem já está no cache do navegador, dispara imediatamente
-  if (heroImg) {
-    if (heroImg.complete && heroImg.naturalWidth > 0) {
-      markLoaded();
-    } else {
-      heroImg.addEventListener('load', markLoaded);
-    }
-  } else {
-    markLoaded();
-  }
-}
-
-
-/* ============================================================
-   9. SCROLL SUAVE — âncoras com offset do header
-   ============================================================ */
-
-function initSmoothScroll() {
-  // O scroll suave nativo (CSS: scroll-behavior: smooth) + offset via padding-top no body
-  // seria suficiente, mas aqui garantimos offset preciso sem CSS scroll-padding.
-
-  const header = $('#header');
-
-  $$('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const id = link.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-
-      if (!target) return;
-
-      e.preventDefault();
-
-      const headerH = header ? header.offsetHeight : 80;
-      const top = target.getBoundingClientRect().top + window.scrollY - headerH;
-
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
-}
-
-
-/* ============================================================
    INICIALIZAÇÃO — DOMContentLoaded
    ============================================================ */
 
@@ -380,6 +358,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolioTabs();
   initPortfolioModal();
   initScrollAnimations();
-  initHero();
-  initSmoothScroll();
 });

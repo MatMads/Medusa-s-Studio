@@ -24,9 +24,23 @@
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon16.png" type="image/png" sizes="16x16">
+  <meta name="theme-color" content="#66533c">
 </head>
 
 <body>
+
+  <!-- Ícones SVG reutilizáveis (referenciados via <use>) -->
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;">
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <path
+        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+    </symbol>
+  </svg>
 
   <!-- ============================================================
        HEADER — fixo no topo com logo e navegação
@@ -58,10 +72,8 @@
 
             <a href="#contato" class="nav__link nav__link--cta" data-section="contato"
               aria-label="Agendar sessão de tatuagem">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                focusable="false">
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              <svg width="14" height="14" focusable="false">
+                <use href="#icon-whatsapp"></use>
               </svg>
               Agendar</a>
           </li>
@@ -87,8 +99,8 @@
     <section class="hero" id="inicio" aria-label="Seção principal">
 
       <!-- Imagem de fundo -->
-      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover hero-video">
-        <source src="medusa video loop 2.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="medusa-video-loop-2.mp4" type="video/mp4">
       </video>
       <div class="absolute inset-0 hero-gradient" aria-hidden="true"></div>
 
@@ -97,7 +109,7 @@
         <span class="hero__eyebrow">Arte autoral &middot; Traço único</span>
 
         <h1 class="hero__title">
-          Sua pele,<br>nossa tela.
+          Sua pele,<br><em>nossa tela</em>.
         </h1>
 
         <p class="hero__subtitle">
@@ -108,11 +120,8 @@
           class="btn btn--hero hero__cta" target="_blank" rel="noopener noreferrer"
           aria-label="Agendar sessão pelo WhatsApp">
           <span class="btn__icon" aria-hidden="true">
-            <!-- WhatsApp icon inline SVG -->
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-              focusable="false">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            <svg width="20" height="20" focusable="false">
+              <use href="#icon-whatsapp"></use>
             </svg>
           </span>
           Agendar sessão
@@ -171,11 +180,11 @@
         <!-- Bloco de imagens (esquerda) -->
         <div class="about__visuals" data-reveal>
           <div class="about__image-frame">
-            <img src="gabi (4).jpg" alt="Gabriele, tatuadora e fundadora do Medusa's Studio" class="about__image-main"
+            <img src="gabi-4.jpg" alt="Gabriele, tatuadora e fundadora do Medusa's Studio" class="about__image-main"
               loading="lazy" width="480" height="600">
           </div>
           <div class="about__image-secondary">
-            <img src="gabi (7).jpg" alt="Gabriele em sessão de tatuagem no estúdio" class="about__image-accent"
+            <img src="gabi-7.jpg" alt="Gabriele em sessão de tatuagem no estúdio" class="about__image-accent"
               loading="lazy" width="220" height="280">
           </div>
           <!-- Ornamento decorativo -->
@@ -203,7 +212,7 @@
 
           <!-- Tags de especialidade -->
           <ul class="about__badges" aria-label="Especialidades do estúdio" role="list">
-            <li class="badge badge--clickable" role="button" tabindex="0" data-src="fine line.jpg"
+            <li class="badge badge--clickable" role="button" tabindex="0" data-src="fine-line.jpg"
               data-caption="Fine Line" aria-label="Ver exemplos de Fine Line">Fine Line</li>
             <li class="badge badge--clickable" role="button" tabindex="0" data-src="lettering.jpg"
               data-caption="Lettering" aria-label="Ver exemplos de Lettering">Lettering</li>
@@ -216,10 +225,8 @@
             <a href="https://wa.me/message/OLV7MY5YDZ5KO1?text=Ol%C3%A1%20tudo%20bem%3F%20Gostaria%20de%20fazer%20um%20or%C3%A7amento"
               class="btn btn--outline" target="_blank" rel="noopener noreferrer"
               aria-label="Falar com a Gabi pelo WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                focusable="false">
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              <svg width="18" height="18" focusable="false">
+                <use href="#icon-whatsapp"></use>
               </svg>
               Falar com a Gabi
             </a>
@@ -232,33 +239,33 @@
     <div class="strip2" aria-hidden="true">
       <div class="strip__track2" aria-hidden="true">
         <!-- Grupo 1 -->
-        <span>Fine Line</span><span>·</span>
-        <span>Blackwork</span><span>·</span>
-        <span>Lettering</span><span>·</span>
-        <span>Ornamental</span><span>·</span>
-        <span>Piercing</span><span>·</span>
-        <span>Arte Autoral</span><span>·</span>
+        <span>Higiene Certificada</span><span>·</span>
+        <span>Material Descartável</span><span>·</span>
+        <span>Agendamento Sem Fila</span><span>·</span>
+        <span>Orçamento Sem Compromisso</span><span>·</span>
+        <span>Estúdio Registrado</span><span>·</span>
+        <span>Atendimento Personalizado</span><span>·</span>
         <!-- Grupo 2 -->
-        <span>Fine Line</span><span>·</span>
-        <span>Blackwork</span><span>·</span>
-        <span>Lettering</span><span>·</span>
-        <span>Ornamental</span><span>·</span>
-        <span>Piercing</span><span>·</span>
-        <span>Arte Autoral</span><span>·</span>
+        <span>Higiene Certificada</span><span>·</span>
+        <span>Material Descartável</span><span>·</span>
+        <span>Agendamento Sem Fila</span><span>·</span>
+        <span>Orçamento Sem Compromisso</span><span>·</span>
+        <span>Estúdio Registrado</span><span>·</span>
+        <span>Atendimento Personalizado</span><span>·</span>
         <!-- Grupo 3 (garante cobertura em telas largas) -->
-        <span>Fine Line</span><span>·</span>
-        <span>Blackwork</span><span>·</span>
-        <span>Lettering</span><span>·</span>
-        <span>Ornamental</span><span>·</span>
-        <span>Piercing</span><span>·</span>
-        <span>Arte Autoral</span><span>·</span>
+        <span>Higiene Certificada</span><span>·</span>
+        <span>Material Descartável</span><span>·</span>
+        <span>Agendamento Sem Fila</span><span>·</span>
+        <span>Orçamento Sem Compromisso</span><span>·</span>
+        <span>Estúdio Registrado</span><span>·</span>
+        <span>Atendimento Personalizado</span><span>·</span>
         <!-- Grupo 4 (par do grupo 3 para reset suave em -50%) -->
-        <span>Fine Line</span><span>·</span>
-        <span>Blackwork</span><span>·</span>
-        <span>Lettering</span><span>·</span>
-        <span>Ornamental</span><span>·</span>
-        <span>Piercing</span><span>·</span>
-        <span>Arte Autoral</span><span>·</span>
+        <span>Higiene Certificada</span><span>·</span>
+        <span>Material Descartável</span><span>·</span>
+        <span>Agendamento Sem Fila</span><span>·</span>
+        <span>Orçamento Sem Compromisso</span><span>·</span>
+        <span>Estúdio Registrado</span><span>·</span>
+        <span>Atendimento Personalizado</span><span>·</span>
       </div>
     </div>
 
@@ -292,11 +299,11 @@
           aria-labelledby="tab-tattoos">
           <div class="portfolio__grid">
 
-            <article class="portfolio__item portfolio__item--featured" data-src="tattoo medusa.jpg"
+            <article class="portfolio__item portfolio__item--featured" data-src="tattoo-medusa.jpg"
               data-caption="Medusa — Fine Line" tabindex="0" role="button"
               aria-label="Ampliar: Tatuagem de Medusa em fine line">
               <div class="portfolio__thumb">
-                <img src="tattoo medusa.jpg" alt="Tatuagem de Medusa em estilo fine line" class="portfolio__img"
+                <img src="tattoo-medusa.jpg" alt="Tatuagem de Medusa em estilo fine line" class="portfolio__img"
                   loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
@@ -305,11 +312,11 @@
               </div>
             </article>
 
-            <article class="portfolio__item portfolio__item--featured" data-src="tattoo costas.jpg"
+            <article class="portfolio__item portfolio__item--featured" data-src="tattoo-costas.jpg"
               data-caption="Costas — Fine Line" tabindex="0" role="button"
               aria-label="Ampliar: Tatuagem grande nas costas">
               <div class="portfolio__thumb">
-                <img src="tattoo costas.jpg" alt="Tatuagem em fine line nas costas" class="portfolio__img"
+                <img src="tattoo-costas.jpg" alt="Tatuagem em fine line nas costas" class="portfolio__img"
                   loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
@@ -318,10 +325,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="tattoo aguia.jpg" data-caption="Águia — Blackwork" tabindex="0"
+            <article class="portfolio__item" data-src="tattoo-aguia.jpg" data-caption="Águia — Blackwork" tabindex="0"
               role="button" aria-label="Ampliar: Tatuagem de águia em blackwork">
               <div class="portfolio__thumb">
-                <img src="tattoo aguia.jpg" alt="Tatuagem de águia em estilo blackwork" class="portfolio__img"
+                <img src="tattoo-aguia.jpg" alt="Tatuagem de águia em estilo blackwork" class="portfolio__img"
                   loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
@@ -330,10 +337,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="tattoo leoa.jpg" data-caption="Leoa — Fine Line" tabindex="0"
+            <article class="portfolio__item" data-src="tattoo-leoa.jpg" data-caption="Leoa — Fine Line" tabindex="0"
               role="button" aria-label="Ampliar: Tatuagem de leoa">
               <div class="portfolio__thumb">
-                <img src="tattoo leoa.jpg" alt="Tatuagem de leoa em fine line" class="portfolio__img" loading="lazy">
+                <img src="tattoo-leoa.jpg" alt="Tatuagem de leoa em fine line" class="portfolio__img" loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
                   <span class="portfolio__overlay-label">Leoa</span>
@@ -341,10 +348,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="tattoo lobo.jpg" data-caption="Lobo — Realismo + Floral"
+            <article class="portfolio__item" data-src="tattoo-lobo.jpg" data-caption="Lobo — Realismo + Floral"
               tabindex="0" role="button" aria-label="Ampliar: Tatuagem de lobo">
               <div class="portfolio__thumb">
-                <img src="tattoo lobo.jpg" alt="Tatuagem de lobo em realismo" class="portfolio__img" loading="lazy">
+                <img src="tattoo-lobo.jpg" alt="Tatuagem de lobo em realismo" class="portfolio__img" loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
                   <span class="portfolio__overlay-label">Lobo</span>
@@ -352,10 +359,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="tattoo tigrinho.jpg" data-caption="Tigre — Fine Line"
+            <article class="portfolio__item" data-src="tattoo-tigrinho.jpg" data-caption="Tigre — Fine Line"
               tabindex="0" role="button" aria-label="Ampliar: Tatuagem de tigre em fine line">
               <div class="portfolio__thumb">
-                <img src="tattoo tigrinho.jpg" alt="Tatuagem de tigre em fine line" class="portfolio__img"
+                <img src="tattoo-tigrinho.jpg" alt="Tatuagem de tigre em fine line" class="portfolio__img"
                   loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
@@ -364,10 +371,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="tattoo got.jpg" data-caption="Game of Thrones — Fine Line"
+            <article class="portfolio__item" data-src="tattoo-got.jpg" data-caption="Game of Thrones — Fine Line"
               tabindex="0" role="button" aria-label="Ampliar: Tatuagem Game of Thrones">
               <div class="portfolio__thumb">
-                <img src="tattoo got.jpg" alt="Tatuagem inspirada em Game of Thrones" class="portfolio__img"
+                <img src="tattoo-got.jpg" alt="Tatuagem inspirada em Game of Thrones" class="portfolio__img"
                   loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
@@ -376,10 +383,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="tattoo antebraço.jpg" data-caption="Antebraço — Ornamental"
+            <article class="portfolio__item" data-src="tattoo-antebraco.jpg" data-caption="Antebraço — Ornamental"
               tabindex="0" role="button" aria-label="Ampliar: Tatuagem no antebraço">
               <div class="portfolio__thumb">
-                <img src="tattoo antebraço.jpg" alt="Tatuagem no antebraço em ornamental" class="portfolio__img"
+                <img src="tattoo-antebraco.jpg" alt="Tatuagem no antebraço em ornamental" class="portfolio__img"
                   loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
@@ -388,10 +395,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="tattoo criada.jpg" data-caption="Original — Arte Autoral"
+            <article class="portfolio__item" data-src="tattoo-criada.jpg" data-caption="Original — Arte Autoral"
               tabindex="0" role="button" aria-label="Ampliar: Tatuagem original autoral">
               <div class="portfolio__thumb">
-                <img src="tattoo criada.jpg" alt="Tatuagem de arte autoral original" class="portfolio__img"
+                <img src="tattoo-criada.jpg" alt="Tatuagem de arte autoral original" class="portfolio__img"
                   loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
@@ -400,10 +407,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="tattoo why not.jpg" data-caption="Why Not? — Lettering"
+            <article class="portfolio__item" data-src="tattoo-why-not.jpg" data-caption="Why Not? — Lettering"
               tabindex="0" role="button" aria-label="Ampliar: Tatuagem lettering Why Not?">
               <div class="portfolio__thumb">
-                <img src="tattoo why not.jpg" alt="Tatuagem lettering Why Not?" class="portfolio__img" loading="lazy">
+                <img src="tattoo-why-not.jpg" alt="Tatuagem lettering Why Not?" class="portfolio__img" loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
                   <span class="portfolio__overlay-label">Why Not?</span>
@@ -418,10 +425,10 @@
         <div class="portfolio__panel" id="panel-piercings" role="tabpanel" aria-labelledby="tab-piercings" hidden>
           <div class="portfolio__grid portfolio__grid--piercings">
 
-            <article class="portfolio__item" data-src="piercing helix.jpg" data-caption="Piercing Helix" tabindex="0"
+            <article class="portfolio__item" data-src="piercing-helix.jpg" data-caption="Piercing Helix" tabindex="0"
               role="button" aria-label="Ampliar: Piercing Helix">
               <div class="portfolio__thumb">
-                <img src="piercing helix.jpg" alt="Piercing helix na orelha" class="portfolio__img" loading="lazy">
+                <img src="piercing-helix.jpg" alt="Piercing helix na orelha" class="portfolio__img" loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
                   <span class="portfolio__overlay-label">Helix</span>
@@ -429,10 +436,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="piercing septo.jpg" data-caption="Piercing Septo" tabindex="0"
+            <article class="portfolio__item" data-src="piercing-septo.jpg" data-caption="Piercing Septo" tabindex="0"
               role="button" aria-label="Ampliar: Piercing de septo">
               <div class="portfolio__thumb">
-                <img src="piercing septo.jpg" alt="Piercing no septo nasal" class="portfolio__img" loading="lazy">
+                <img src="piercing-septo.jpg" alt="Piercing no septo nasal" class="portfolio__img" loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
                   <span class="portfolio__overlay-label">Septo</span>
@@ -440,10 +447,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="piercing aba.jpg" data-caption="Piercing Aba Nasal" tabindex="0"
+            <article class="portfolio__item" data-src="piercing-aba.jpg" data-caption="Piercing Aba Nasal" tabindex="0"
               role="button" aria-label="Ampliar: Piercing de aba">
               <div class="portfolio__thumb">
-                <img src="piercing aba.jpg" alt="Piercing de aba" class="portfolio__img" loading="lazy">
+                <img src="piercing-aba.jpg" alt="Piercing de aba" class="portfolio__img" loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
                   <span class="portfolio__overlay-label">Aba Nasal</span>
@@ -451,10 +458,10 @@
               </div>
             </article>
 
-            <article class="portfolio__item" data-src="piercing umbigo.jpg" data-caption="Piercing Umbigo" tabindex="0"
+            <article class="portfolio__item" data-src="piercing-umbigo.jpg" data-caption="Piercing Umbigo" tabindex="0"
               role="button" aria-label="Ampliar: Piercing de umbigo">
               <div class="portfolio__thumb">
-                <img src="piercing umbigo.jpg" alt="Piercing de umbigo" class="portfolio__img" loading="lazy">
+                <img src="piercing-umbigo.jpg" alt="Piercing de umbigo" class="portfolio__img" loading="lazy">
                 <div class="portfolio__overlay" aria-hidden="true">
                   <span class="portfolio__overlay-icon">+</span>
                   <span class="portfolio__overlay-label">Umbigo</span>
@@ -488,7 +495,7 @@
 
         <!-- Info + WhatsApp -->
         <div class="contact__info" data-reveal>
-          <span class="section__eyebrow" style="justify-content: center;">Vamos conversar</span>
+          <span class="section__eyebrow">Vamos conversar</span>
           <h2 class="section__title" id="contact-heading">Agende sua sessão</h2>
 
           <p class="contact__description">
@@ -501,10 +508,8 @@
             class="btn btn--whatsapp" target="_blank" rel="noopener noreferrer" id="whatsapp-cta"
             aria-label="Entrar em contato pelo WhatsApp">
             <span class="btn__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                focusable="false">
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              <svg width="22" height="22" focusable="false">
+                <use href="#icon-whatsapp"></use>
               </svg>
             </span>
             Chamar no WhatsApp
@@ -515,10 +520,8 @@
             <div class="contact__socials-list">
               <a href="https://www.instagram.com/medusasstudio/" class="contact__social-link" target="_blank"
                 rel="noopener noreferrer" aria-label="Instagram do Medusa's Studio">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true" focusable="false">
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                <svg width="18" height="18" aria-hidden="true" focusable="false">
+                  <use href="#icon-instagram"></use>
                 </svg>
                 @medusasstudio
               </a>
@@ -560,17 +563,15 @@
         <a href="https://wa.me/message/OLV7MY5YDZ5KO1?text=Ol%C3%A1%20tudo%20bem%3F%20Gostaria%20de%20fazer%20um%20or%C3%A7amento"
           class="footer__social-link" target="_blank" rel="noopener noreferrer"
           aria-label="WhatsApp do Medusa's Studio">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          <svg width="16" height="16" aria-hidden="true" focusable="false">
+            <use href="#icon-whatsapp"></use>
           </svg>
           WhatsApp
         </a>
         <a href="https://www.instagram.com/medusasstudio/" class="footer__social-link" target="_blank"
           rel="noopener noreferrer" aria-label="Instagram do Medusa's Studio">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-            <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          <svg width="16" height="16" aria-hidden="true" focusable="false">
+            <use href="#icon-instagram"></use>
           </svg>
           Instagram
         </a>
@@ -582,7 +583,7 @@
       <div class="container">
         <p class="footer__copy">
           &copy; 2026 Medusa's Studio. by <strong><a href="https://www.linkedin.com/in/mateus-miranda-117b8515b/"
-              target="_blank" rel="noopener noreferrer" aria-label="Instagram do M.Miranda">M.Miranda</a></strong>.
+              target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de M.Miranda">M.Miranda</a></strong>.
         </p>
       </div>
     </div>
