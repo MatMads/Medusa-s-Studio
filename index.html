@@ -635,7 +635,9 @@
         </svg>
       </button>
       <figure class="modal__figure">
-        <img src="" alt="" class="modal__image" id="modal-img">
+        <!-- Sem atributo src: um src="" faz o browser requisitar a própria
+             página como se fosse imagem. O JS define o src ao abrir o modal. -->
+        <img alt="" class="modal__image" id="modal-img">
         <figcaption class="modal__caption" id="modal-caption"></figcaption>
       </figure>
     </div>

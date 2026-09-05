@@ -241,7 +241,9 @@ function initPortfolioModal() {
   /** Fecha o modal e restaura o foco */
   function closeModal() {
     modal.setAttribute('hidden', '');
-    img.src = '';
+    // removeAttribute, não src = '': um src vazio faz o browser requisitar
+    // a própria página como se fosse imagem a cada fechamento.
+    img.removeAttribute('src');
     document.body.style.overflow = '';
     galleryItems = [];
     galleryIndex = -1;
