@@ -2,9 +2,13 @@
 #
 # IMPORTANTE: o deploy usa uma LISTA DE PERMISSÃO (allowlist), não uma lista de
 # exclusão. Só o que está em PUBLICAR abaixo vai ao ar. Pastas de trabalho —
-# assets-fonte/, redesign/, .claude/ — ficam de fora por padrão, sem depender de
-# alguém lembrar de excluí-las. Ao adicionar um arquivo novo ao site, inclua-o
-# aqui também, senão ele não sobe.
+# assets-fonte/, .claude/ — ficam de fora por padrão, sem depender de alguém
+# lembrar de excluí-las. Ao adicionar um arquivo novo ao site, inclua-o aqui
+# também, senão ele não sobe.
+#
+# A lista do step de conferência é de propósito mais larga do que o que existe
+# hoje no repositório: serve para o dia em que uma dessas pastas voltar a ser
+# criada.
 name: Deploy static content to Pages
 
 on:
