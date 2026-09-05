@@ -1132,18 +1132,108 @@ section[id] {
    ============================================================ */
 
 .reviews {
-  /* Ocupa largura total dentro do container, não centraliza */
   width: 100%;
   padding-block: var(--sp-20);
 }
 
-.reviews__inner {
-  /* Centraliza o container para o grid não colar na borda */
-  margin-inline: auto;
+/* — Resumo da nota, no topo da seção — */
+.reviews__score {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.reviews__score strong {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--color-primary);
+}
+
+.reviews__stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--color-primary);
+  fill: currentColor;
+}
+
+.reviews__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: var(--sp-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-secondary);
+  transition: color var(--t-fast), border-color var(--t-fast);
+}
+
+.reviews__link:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* — Grade das avaliações —
+   Colunas CSS em vez de grid: os textos têm tamanhos muito diferentes
+   (de uma linha a um parágrafo longo) e as colunas acomodam isso sozinhas,
+   sem buraco e sem JavaScript. */
+.reviews__grid {
+  columns: 3;
+  column-gap: var(--sp-6);
+  margin-top: var(--sp-10);
+}
+
+.review {
+  /* Impede que um card seja partido no meio entre duas colunas. */
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: var(--sp-6);
+  padding: var(--sp-6);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-med), box-shadow var(--t-med);
+}
+
+.review:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.review__text {
+  /* <blockquote> tem margem por padrão em alguns navegadores. */
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.75;
+  color: var(--color-text);
+  text-wrap: pretty;
+}
+
+.review__text p {
+  margin: 0;
+}
+
+.review__author {
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  color: var(--color-primary);
+}
+
+.review__when {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-neutral);
+  letter-spacing: 0.04em;
 }
 
 /* ============================================================
@@ -1576,6 +1666,11 @@ section[id] {
     margin-bottom: 0;
   }
 
+  /* Avaliações: uma coluna só no celular */
+  .reviews__grid {
+    columns: 1;
+  }
+
   /* Portfolio */
   .portfolio__item--featured {
     grid-column: span 1;
@@ -1629,6 +1724,11 @@ section[id] {
 
   .about__content {
     padding-inline-start: var(--sp-4);
+  }
+
+  /* Avaliações: 2 colunas no tablet */
+  .reviews__grid {
+    columns: 2;
   }
 
   /* Portfólio: 3 colunas no tablet */
