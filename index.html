@@ -99,8 +99,12 @@
     <section class="hero" id="inicio" aria-label="Seção principal">
 
       <!-- Imagem de fundo -->
-      <video autoplay muted loop playsinline class="hero-video">
-        <source src="medusa-video-loop-2.mp4" type="video/mp4">
+      <!-- Vídeo sem faixa de áudio (o loop é mudo) e recomprimido: 2,2 MB -> 828 KB.
+           O poster segura o hero enquanto o vídeo baixa. Decorativo: não é
+           anunciado por leitor de tela nem entra na ordem de foco. -->
+      <video autoplay muted loop playsinline preload="metadata" poster="video/hero-poster.jpg"
+        aria-hidden="true" tabindex="-1" class="hero-video">
+        <source src="video/hero.mp4" type="video/mp4">
       </video>
       <div class="absolute inset-0 hero-gradient" aria-hidden="true"></div>
 
@@ -209,6 +213,22 @@
             Aqui, cada sessão é um ritual. Do planejamento à execução, cuido de cada detalhe para que sua tatuagem seja
             exatamente o que você sempre imaginou ou algo ainda mais especial.
           </p>
+
+          <!-- Fatos objetivos: prova concreta no lugar de adjetivo solto -->
+          <dl class="facts">
+            <div class="facts__item">
+              <dt class="facts__label">Especialidades</dt>
+              <dd class="facts__value">4 estilos</dd>
+            </div>
+            <div class="facts__item">
+              <dt class="facts__label">Material</dt>
+              <dd class="facts__value">100% descartável</dd>
+            </div>
+            <div class="facts__item">
+              <dt class="facts__label">Acompanhamento</dt>
+              <dd class="facts__value">Até cicatrizar</dd>
+            </div>
+          </dl>
 
           <!-- Tags de especialidade -->
           <ul class="about__badges" aria-label="Especialidades do estúdio" role="list">
@@ -590,6 +610,17 @@
   </footer>
 
   <!-- ============================================================
+       WHATSAPP FLUTUANTE — aparece depois que o visitante rola
+  ============================================================ -->
+  <a class="float-wpp" id="float-wpp"
+    href="https://wa.me/message/OLV7MY5YDZ5KO1?text=Ol%C3%A1%20tudo%20bem%3F%20Gostaria%20de%20fazer%20um%20or%C3%A7amento"
+    target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <svg width="26" height="26" aria-hidden="true" focusable="false">
+      <use href="#icon-whatsapp"></use>
+    </svg>
+  </a>
+
+  <!-- ============================================================
        MODAL — exibição ampliada das imagens do portfólio
   ============================================================ -->
   <div class="modal" id="portfolio-modal" role="dialog" aria-modal="true" aria-label="Imagem ampliada do portfólio"
@@ -604,7 +635,9 @@
         </svg>
       </button>
       <figure class="modal__figure">
-        <img src="" alt="" class="modal__image" id="modal-img">
+        <!-- Sem atributo src: um src="" faz o browser requisitar a própria
+             página como se fosse imagem. O JS define o src ao abrir o modal. -->
+        <img alt="" class="modal__image" id="modal-img">
         <figcaption class="modal__caption" id="modal-caption"></figcaption>
       </figure>
     </div>

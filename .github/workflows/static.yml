@@ -1,28 +1,27 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Publica o site estático no GitHub Pages.
+#
+# IMPORTANTE: o deploy usa uma LISTA DE PERMISSÃO (allowlist), não uma lista de
+# exclusão. Só o que está em PUBLICAR abaixo vai ao ar. Pastas de trabalho —
+# assets-fonte/, redesign/, .claude/ — ficam de fora por padrão, sem depender de
+# alguém lembrar de excluí-las. Ao adicionar um arquivo novo ao site, inclua-o
+# aqui também, senão ele não sobe.
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -31,13 +30,65 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Montar pasta de publicação
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+
+          # --- PUBLICAR ---
+          cp index.html   _site/
+          cp ./*.jpg      _site/          # fotos do portfólio e da artista
+          cp ./*.png      _site/          # favicons
+          cp -r css       _site/
+          cp -r js        _site/
+          cp -r img       _site/          # logo
+          cp -r video     _site/          # hero.mp4 + poster
+
+          echo "--- publicado ---"
+          find _site -type f | sort
+          echo "--- peso ---"
+          du -sh _site
+
+      - name: Conferir que nada de trabalho vazou
+        run: |
+          set -euo pipefail
+          for proibido in assets-fonte redesign .claude .github _originais _legacy; do
+            if find _site -name "$proibido" | grep -q .; then
+              echo "ERRO: '$proibido' entrou na pasta de publicação."
+              exit 1
+            fi
+          done
+          echo "OK: nenhuma pasta de trabalho no artefato."
+
+      - name: Conferir que nenhum asset do site ficou de fora
+        run: |
+          set -euo pipefail
+          # Lê o que index.html referencia e falha se algum arquivo não foi copiado.
+          # Evita o modo de falha oposto ao vazamento: publicar um site quebrado.
+          node - <<'JS'
+          const fs = require('fs');
+          const path = require('path');
+          const html = fs.readFileSync('index.html', 'utf8');
+          const refs = [...html.matchAll(/(?:src|href|poster|data-src)="([^"#h][^":]*?)"/g)].map(m => m[1]);
+          const faltando = [...new Set(refs)].filter(r => !fs.existsSync(path.join('_site', r)));
+          if (faltando.length) {
+            console.error('ERRO: asset referenciado não foi publicado:\n  ' + faltando.join('\n  '));
+            console.error('Adicione-o à lista PUBLICAR em .github/workflows/static.yml');
+            process.exit(1);
+          }
+          console.log('OK: todos os ' + new Set(refs).size + ' assets referenciados estão publicados.');
+          JS
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: '_site'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

@@ -241,7 +241,9 @@ function initPortfolioModal() {
   /** Fecha o modal e restaura o foco */
   function closeModal() {
     modal.setAttribute('hidden', '');
-    img.src = '';
+    // removeAttribute, não src = '': um src vazio faz o browser requisitar
+    // a própria página como se fosse imagem a cada fechamento.
+    img.removeAttribute('src');
     document.body.style.overflow = '';
     galleryItems = [];
     galleryIndex = -1;
@@ -348,6 +350,26 @@ function initScrollAnimations() {
 
 
 /* ============================================================
+   8. WHATSAPP FLUTUANTE — surge após o visitante sair do hero
+   ============================================================ */
+
+function initFloatWhatsapp() {
+  const btn = $('#float-wpp');
+  if (!btn) return;
+
+  /** Só aparece depois de 60% da primeira tela, para não brigar com o CTA do hero. */
+  const THRESHOLD = window.innerHeight * 0.6;
+
+  function update() {
+    btn.classList.toggle('is-visible', window.scrollY > THRESHOLD);
+  }
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+}
+
+
+/* ============================================================
    INICIALIZAÇÃO — DOMContentLoaded
    ============================================================ */
 
@@ -358,4 +380,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolioTabs();
   initPortfolioModal();
   initScrollAnimations();
+  initFloatWhatsapp();
 });
