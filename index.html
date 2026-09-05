@@ -105,9 +105,13 @@
       <!-- Vídeo sem faixa de áudio (o loop é mudo) e recomprimido: 2,2 MB -> 828 KB.
            O poster segura o hero enquanto o vídeo baixa. Decorativo: não é
            anunciado por leitor de tela nem entra na ordem de foco. -->
-      <video autoplay muted loop playsinline preload="metadata" poster="video/hero-poster.jpg"
+      <!-- O ?v= força o navegador a baixar de novo quando o arquivo muda.
+           O GitHub Pages manda Cache-Control: max-age=600 e não deixa alterar
+           header, então sem isso um visitante fica até 10 min com a versão
+           antiga em cache. Incremente ao trocar o vídeo ou o poster. -->
+      <video autoplay muted loop playsinline preload="metadata" poster="video/hero-poster.jpg?v=2"
         aria-hidden="true" tabindex="-1" class="hero-video">
-        <source src="video/hero.mp4" type="video/mp4">
+        <source src="video/hero.mp4?v=2" type="video/mp4">
       </video>
       <div class="hero-gradient" aria-hidden="true"></div>
 
