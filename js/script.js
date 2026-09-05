@@ -348,6 +348,26 @@ function initScrollAnimations() {
 
 
 /* ============================================================
+   8. WHATSAPP FLUTUANTE — surge após o visitante sair do hero
+   ============================================================ */
+
+function initFloatWhatsapp() {
+  const btn = $('#float-wpp');
+  if (!btn) return;
+
+  /** Só aparece depois de 60% da primeira tela, para não brigar com o CTA do hero. */
+  const THRESHOLD = window.innerHeight * 0.6;
+
+  function update() {
+    btn.classList.toggle('is-visible', window.scrollY > THRESHOLD);
+  }
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+}
+
+
+/* ============================================================
    INICIALIZAÇÃO — DOMContentLoaded
    ============================================================ */
 
@@ -358,4 +378,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initPortfolioTabs();
   initPortfolioModal();
   initScrollAnimations();
+  initFloatWhatsapp();
 });
