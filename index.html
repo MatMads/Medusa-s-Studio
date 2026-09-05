@@ -109,7 +109,13 @@
         aria-hidden="true" tabindex="-1" class="hero-video">
         <source src="video/hero.mp4" type="video/mp4">
       </video>
-      <div class="absolute inset-0 hero-gradient" aria-hidden="true"></div>
+      <div class="hero-gradient" aria-hidden="true"></div>
+
+      <!-- Degradê que fecha o hero na cor do site. Serve de acabamento e, de
+           quebra, camufla a marca d'água que o vídeo tem no canto inferior
+           direito (só aparece em tela de celular: em tablet e desktop o corte
+           vertical do `cover` já a deixa de fora). -->
+      <div class="hero-fade" aria-hidden="true"></div>
 
       <!-- Conteúdo centralizado -->
       <div class="container hero__content">
