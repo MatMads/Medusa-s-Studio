@@ -78,7 +78,9 @@ jobs:
           const fs = require('fs');
           const path = require('path');
           const html = fs.readFileSync('index.html', 'utf8');
-          const refs = [...html.matchAll(/(?:src|href|poster|data-src)="([^"#h][^":]*?)"/g)].map(m => m[1]);
+          const refs = [...html.matchAll(/(?:src|href|poster|data-src)="([^"#h][^":]*?)"/g)]
+            // tira o ?v= de cache-busting antes de procurar o arquivo no disco
+            .map(m => m[1].split('?')[0]);
           const faltando = [...new Set(refs)].filter(r => !fs.existsSync(path.join('_site', r)));
           if (faltando.length) {
             console.error('ERRO: asset referenciado não foi publicado:\n  ' + faltando.join('\n  '));
